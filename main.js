@@ -12,10 +12,6 @@ function getImageTags () {
     return tags;
 	});
 }
-// var newDiv = document.createElement("div"); 
-// foundImage.src = "http://www.animalplanet.com/breed-selector/dog-breeds.html"
-// foundImage.srcset  = "http://www.animalplanet.com/breed-selector/dog-breeds.html"
-// console.log(foundImage)
 
 getImageTags()
 .then(getFlickrId)
@@ -26,7 +22,6 @@ getImageTags()
 
 
 //get images from tags
-
 function getFlickrId (tagArr){
     var tagString = tagArr.join('%2C+');
     var method = 'flickr.photos.search';
