@@ -6,8 +6,8 @@
   "version": "1.0",
   "content_scripts": [
     {
-      "matches": ["http://www.google.com/*", "https://en.wikipedia.org/wiki/*"],
-      "js": ["axios.js", "clarifai.js", "traverseDom.js", "main.js"]
+     "matches": ["http://www.google.com/*", "https://en.wikipedia.org/wiki/*"],
+      "js": ["axios.js", "clarifai.js", "traverseDom.js", "numberChanging.js", "main.js"]
     }
   ],
   "browser_action": {
