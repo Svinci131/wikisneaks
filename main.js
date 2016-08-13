@@ -16,8 +16,28 @@ function getImageTags () {
 function messWithNumbers () {
 	var body = document.getElementById('mw-content-text')
 	var els = body.childNodes
-	els[3].innerHTML = "hi"
-	console.log()
+
+	for(var i = 0; i < els.length; i++) {
+		var el = els[i]
+		var text = el.innerHTML ? el.innerHTML.split(" ") : [];
+		var newText = []; 
+		text.forEach(function(word){
+			if (!isNaN(word)) {
+				var newNum = parseInt(word)+500
+				newText.push(newNum)
+				console.log(word, isNaN(word))
+			}
+			else {
+				newText.push(word)
+			}
+		});
+
+		if (newText.length) el.innerHTML = newText.join(" ")
+	}
+
+	
+
+	console.log(els, els[3])
 	//add 100 to all numbers greater then 100
 	// for(var i = 0; i < paragraphs.length; i++) {
 	// 	var newContent = [];
