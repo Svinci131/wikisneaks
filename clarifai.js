@@ -10,14 +10,13 @@ function getCredentials(cb) {
   };
   var url = 'https://api.clarifai.com/v1/token';
 
-  // return axios.post(url, data, {
-  //   'transformRequest': [
-  //     function() {
-  //       return transformDataToParams(data);
-  //     }
-  //   ]
-  // })
-  .then(function(r) {
+  return axios.post(url, data, {
+    'transformRequest': [
+      function() {
+        return transformDataToParams(data);
+      }
+    ]
+  }).then(function(r) {
     localStorage.setItem('accessToken', r.data.access_token);
     localStorage.setItem('tokenTimestamp', Math.floor(Date.now() / 1000));
     cb();
@@ -84,5 +83,3 @@ function run(imgurl) {
     postImage(imgurl);
   }
 }
-
-
