@@ -1,6 +1,5 @@
-getCredentials(function() {
-  console.log('got credentials');
-});
+getCredentials(function() {});
+
 var mainImage = getMainImageSrc();
 var accessToken = localStorage.getItem('accessToken');
 
@@ -13,14 +12,16 @@ function getImageTags () {
 	});
 }
 
+// function weight (arr, word) {
+// 	var index = arr.indexOf(word)
+// 	if (arr.indexOfWord > 0) {
+// 		arr[0] = word; 
+// 	}
+// }
 getImageTags()
 .then(function(tags) {
   var truncTags = tags
   // var truncTags = tags.slice(0,5) || tags;
- truncTags[0] = "face"
-  truncTags[1] = "old"
-  truncTags[2] = "man"
-  truncTags[3] = "painting"
   var adult = truncTags.indexOf("adult")
   truncTags.splice(adult, 1)
  console.log(truncTags)
@@ -54,29 +55,22 @@ function getFlickrId (tagArr){
     });
 
 	}
-function parseXml(xml) {
-   var dom = null;
-   if (window.DOMParser) {
-      try { 
-         dom = (new DOMParser()).parseFromString(xml, "text/xml"); 
-      } 
-      catch (e) { dom = null; }
-   }
-   else if (window.ActiveXObject) {
-      try {
-         dom = new ActiveXObject('Microsoft.XMLDOM');
-         dom.async = false;
-         if (!dom.loadXML(xml)) // parse error ..
 
-            window.alert(dom.parseError.reason + dom.parseError.srcText);
-      } 
-      catch (e) { dom = null; }
-   }
-   else
-      alert("cannot parse xml string!");
-   return dom;
+
+getBingData();
+
+function getBingData () {
+	var url = "https://api.cognitive.microsoft.com/bing/v5.0/images/search?q=cats&bow&count=1&offset=0&mkt=en-us&safeSearch=Moderate"
+	return axios.get(url, {
+    headers: {
+      "Ocp-Apim-Subscription-Key": "3fc3d83a1e7c44bca46c097afcaeb748"
+    }
+  })
+  	.then(function(r) {
+  		console.log("cats!", r.data.value[0].thumbnailUrl);
+
+  	});
 }
-
 
 function getFlickrImageUrl (photo_id) {
   var flickrUrl = 'https://api.flickr.com/services/rest/';
