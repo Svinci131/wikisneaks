@@ -51,7 +51,7 @@ function messWithNumbers () {
 				if (word === "you're") newText.push("your");
 				else if (word === "there") newText.push("thier");
 				else if (word === "restaurant") newText.push("restraunt");
-				newText.push(word);
+				else newText.push(word);
 			}
 		});
 
