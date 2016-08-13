@@ -1,8 +1,14 @@
 ///var header = document.querySelectorAll("h1")[0].innerHTML = "my text"
-document.querySelectorAll("h1")[0].innerHTML = "my text"
+document.querySelectorAll('h1')[0].innerHTML = 'my text';
 
-//Function that search dom and get all image links 
-//Function that uses the api gets tags 
-	//Gets similar images
-//Replaces
+//this finds the main image on a wikipedia page
+var foundImage = document.querySelector("a.image > img")
+//replace that image's source with a new source'
+function replaceImage(image, url){
+	image.src = url;
+	image.srcset = url
+}
+
+
+
 
