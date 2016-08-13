@@ -15,19 +15,19 @@ function getImageTags () {
 
 getImageTags()
 .then(function(tags) {
-  var truncTags = tags
-  // var truncTags = tags.slice(0,5) || tags;
- truncTags[0] = "face"
-  truncTags[1] = "old"
-  truncTags[2] = "man"
-  truncTags[3] = "painting"
+  //var truncTags = tags
+  var truncTags = tags.slice(0,5) || tags;
   var adult = truncTags.indexOf("adult")
   truncTags.splice(adult, 1)
  console.log(truncTags)
+ getBingData(truncTags);
   return getFlickrId(truncTags)
 })
 .then(getFlickrImageUrl).then(function(url){
   replaceImage(foundImage, url);
+})
+.catch(function (err) {
+  console.log(err)
 });
 
 
@@ -57,10 +57,16 @@ function getFlickrId (tagArr){
 
 	}
 
-getBingData();
 
-function getBingData () {
-	var url = "https://api.cognitive.microsoft.com/bing/v5.0/images/search?q=cats&count=1&offset=0&mkt=en-us&safeSearch=Moderate"
+
+function getBingData (tags) {
+
+	var url = "https://api.cognitive.microsoft.com/bing/v5.0/images/search?q="
+  + tags.join(", ")
+  + ", &count=1&offset=0&mkt=en-us&safeSearch=Moderate"
+  console.log("------------------------------")
+  console.log(url)
+  console.log("------------------------------")
 	return axios.get(url, {
     headers: {
       "Ocp-Apim-Subscription-Key": "3fc3d83a1e7c44bca46c097afcaeb748"
