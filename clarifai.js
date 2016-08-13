@@ -54,7 +54,7 @@ function postImage(imgurl) {
     }
     /*'content-type': 'application/x-www-form-urlencoded'*/
   }).then(function(r) {
-    parseResponse(r.data);
+    return parseResponse(r.data);
   }, function(err) {
     console.log('Sorry, something is wrong: ' + err);
   });
@@ -68,8 +68,9 @@ function parseResponse(resp) {
   } else {
     console.log('Sorry, something is wrong.');
   }
-
-  document.getElementById('tags').innerHTML = tags.toString().replace(/,/g, ', ');
+  console.log("here", tags)
+  // tags.toString().replace(/,/g, ', ');
+  // document.getElementById('tags').innerHTML = tags.toString().replace(/,/g, ', ');
   return tags;
 }
 
