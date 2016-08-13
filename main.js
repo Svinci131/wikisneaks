@@ -65,7 +65,6 @@ function getFlickrImageUrl (photo_id) {
     + '&photo_id=' + photo_id
     + '&format=' + format
     + '&nojsoncallback=' + callback;
-  console.log(url);
   return axios.get(url)
   .then(function(r) {
     var imgUrl = r.data.photo.urls.url[0]._content;

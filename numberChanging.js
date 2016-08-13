@@ -35,6 +35,11 @@ function messWithNumbers () {
 				var newNum;
 				if (isDate(monthCheck, wordBefore)) {
 					newNum = parseInt(word)+10
+					var d = new Date();
+					var currentYear = d.getFullYear();
+					if (newNum > currentYear) {
+						newNum-=20;
+					}
 				}
 				else {
 					var amount = Math.pow(10, word.length - 1);
