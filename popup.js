@@ -89,7 +89,7 @@ function getImageUrl(searchTerm, callback, errorCallback) {
 }
 
 function renderStatus(statusText) {
-  document.getElementById('status').textContent = statusText;
+  document.getElementById('status').textContent = "Hello World";
 }
 
 document.addEventListener('DOMContentLoaded', function() {
