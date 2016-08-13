@@ -30,8 +30,6 @@ getImageTags()
   replaceImage(foundImage, url);
 });
 
-
-
 //get images from tags
 function getFlickrId (tagArr){
     var tagString = tagArr.join('%2C+');
@@ -56,17 +54,29 @@ function getFlickrId (tagArr){
     });
 
 	}
+function parseXml(xml) {
+   var dom = null;
+   if (window.DOMParser) {
+      try { 
+         dom = (new DOMParser()).parseFromString(xml, "text/xml"); 
+      } 
+      catch (e) { dom = null; }
+   }
+   else if (window.ActiveXObject) {
+      try {
+         dom = new ActiveXObject('Microsoft.XMLDOM');
+         dom.async = false;
+         if (!dom.loadXML(xml)) // parse error ..
 
-getGoogleData ()
+            window.alert(dom.parseError.reason + dom.parseError.srcText);
+      } 
+      catch (e) { dom = null; }
+   }
+   else
+      alert("cannot parse xml string!");
+   return dom;
+}
 
-function getGoogleData () {
-	var url = "https://www.google.com/search?start=0&num=10&q=red+sox&cr=countryCA&client=google-csbe&output=xml_no_dtd&cx=00255077836266642015:u-scht7a-8i"
-	return axios.get(url)
-  	.then(function(r) {
-  		console.log(parseXml(r));
-
-  	});
-}//http://goessner.net/download/prj/jsonxml/
 
 function getFlickrImageUrl (photo_id) {
   var flickrUrl = 'https://api.flickr.com/services/rest/';
