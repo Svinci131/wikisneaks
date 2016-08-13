@@ -49,8 +49,9 @@ function messWithNumbers () {
 			}
 			else {
 				if (word === "you're") newText.push("your");
-				else if (word === "there") newText.push("thier");
+				else if (word === "there") newText.push("their");
 				else if (word === "restaurant") newText.push("restraunt");
+				else if (word === "receive") newText.push("recieve");
 				else newText.push(word);
 			}
 		});
