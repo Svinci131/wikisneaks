@@ -12,3 +12,10 @@ function replaceImage(image, url){
 
 
 
+//(el, url)
+function replaceAnImage() {}
+
+function replaceAllImages() {
+	//for each image replace tag 
+}
+
