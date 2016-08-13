@@ -1,0 +1,19 @@
+//api.flickr.com/services/rest/?method=flickr.photos.search&api_key=3bc2eb107650c442ed3c64a9ca0ef2a4&tags=business%2C+leader%2C+president&format=json&nojsoncallback=1&api_sig=b6ec8700320ad26054202540e689bc6b
+
+function getFlickerId (tagArr){
+    var tagString = tagArr.join('%2C+');
+    var method = 'flickr.photos.search';
+    var flickrUrl = 'https://api.flickr.com/services/rest/';
+    var api_key = 'e7b4710e9ea3c0d71fee1d0ec25a5f37';
+    var format = 'json';
+    var callback = 1;
+    var url = flickrUrl
+    + '?method=' + method
+    + '&api_key=' + api_key
+    + '&tags=' + tagString
+    + '&format=' + format
+    + '&nojsoncallback=' + callback;
+}
+https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=e7b4710e9ea3c0d71fee1d0ec25a5f37&photo_id=business%2C+leader%2C+politician&format=json&nojsoncallback=1
+
+https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=3bc2eb107650c442ed3c64a9ca0ef2a4&tags=business%2C+leader%2C+president&format=json&nojsoncallback=1
