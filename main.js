@@ -10,8 +10,7 @@ postImage(mainImage)
   //remove adult for obvious reasons
   var adult = truncTags.indexOf("adult")
   truncTags.splice(adult, 1)
-  var type = isPainting (tags) ? "Clipart" : "Photo"
-  return getBingData(truncTags, type);
+  return getBingData(truncTags);
 })
 .then(function(url){
   replaceImage(foundImage, url);
@@ -31,11 +30,10 @@ function isPainting (tags) {
 	return false
 }
 
-function getBingData (tags, type) {
+function getBingData (tags) {
 	var url = "https://api.cognitive.microsoft.com/bing/v5.0/images/search?q="
   + tags.join(", ")
   + ", &count=1&offset=0&mkt=en-us&safeSearch=Moderate"
-  + "&imageType="+type
   console.log("------------------------------")
   console.log(url)
   console.log("------------------------------")
