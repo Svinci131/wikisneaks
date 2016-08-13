@@ -23,11 +23,17 @@ function getImageTags () {
 	});
 }
 
+// console.log(document.querySelector("a.image > img"));
+// document.querySelector("a.image > img").src="https://www.placecage.com/200/300"
+// document.querySelector("a.image > img").srcset="https://www.placecage.com/200/300"
+
 getImageTags()
 .then(getFlickrId)
 .then(getFlickrImageUrl).then(function(url){
   replaceImage(foundImage, url);
 });
+
+
 
 
 //get images from tags
@@ -58,6 +64,7 @@ function getFlickrId (tagArr){
 
 
 function isDate (string) {
+  if(!string) return false;
 	string = string.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
 	var months = {
 		january: 31,
