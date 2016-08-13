@@ -1,7 +1,6 @@
-getCredentials(function() {});
-
 var mainImage = getMainImageSrc();
 
+getCredentials();
 messWithNumbers();
 
 postImage(mainImage)
