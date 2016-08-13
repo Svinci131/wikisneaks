@@ -1,5 +1,5 @@
 ///var header = document.querySelectorAll("h1")[0].innerHTML = "my text"
-document.querySelectorAll('h1')[0].innerHTML = 'my text';
+// document.querySelectorAll('h1')[0].innerHTML = 'my text';
 
 //this finds the main image on a wikipedia page
 var foundImage = document.querySelector("a.image > img")
@@ -17,7 +17,4 @@ function replaceImage(image, url){
 	// image.srcset = url
 }
 
-function replaceAllImages() {
-	//for each image replace tag
-}
 
