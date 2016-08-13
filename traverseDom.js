@@ -9,7 +9,12 @@ function getMainImageSrc () {
 }
 //replace that image's source with a new source'
 function replaceImage(image, url){
-	image.src = url;
-	image.srcset = url;
+  document.querySelector("a.image > img").src=url;
+  document.querySelector("a.image > img").srcset=url;
+ //  console.log("image to be replaced", image);
+ //  console.log("replacing human");
+	// image.src = url;
+	// image.srcset = url
 }
+
 

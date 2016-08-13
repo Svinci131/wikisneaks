@@ -12,19 +12,17 @@ function getImageTags () {
     return tags;
 	});
 }
-var newDiv = document.createElement("div"); 
-foundImage.src = "http://www.animalplanet.com/breed-selector/dog-breeds.html"
-foundImage.srcset  = "http://www.animalplanet.com/breed-selector/dog-breeds.html"
-console.log(foundImage)
+// var newDiv = document.createElement("div"); 
+// foundImage.src = "http://www.animalplanet.com/breed-selector/dog-breeds.html"
+// foundImage.srcset  = "http://www.animalplanet.com/breed-selector/dog-breeds.html"
+// console.log(foundImage)
 
-foundImage.replaceChild(newDiv, foundImage.childNodes[0])
-// getImageTags()
-// .then(getFlickrId)
-// .then(getFlickrImageUrl)
-// .then(function(url){
-//   console.log("here", url)
-//   replaceImage(foundImage, url);
-// });
+getImageTags()
+.then(getFlickrId)
+.then(getFlickrImageUrl).then(function(url){
+  replaceImage(foundImage, url);
+});
+
 
 
 //get images from tags
