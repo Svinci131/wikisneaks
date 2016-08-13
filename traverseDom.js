@@ -6,3 +6,10 @@ document.querySelectorAll("h1")[0].innerHTML = "my text"
 	//Gets similar images
 //Replaces
 
+//(el, url)
+function replaceAnImage() {}
+
+function replaceAllImages() {
+	//for each image replace tag 
+}
+

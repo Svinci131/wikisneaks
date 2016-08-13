@@ -1,0 +1,4 @@
+//(url)
+function getImageTags() {
+	
+}
