@@ -15,8 +15,7 @@ function getImageTags () {
 	});
 }
 
-
-function isDate (string) {
+function isDate (string, wordBefore) {
 	string = string.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
 	var months = {
 		january: 31, 
@@ -33,6 +32,7 @@ function isDate (string) {
 		december: 31 
 	}
 	if (months[string.toLowerCase()]) return true
+	//else if (string.toLowerCase() == "in") return true
 	else return false
 }
 
@@ -47,8 +47,9 @@ function messWithNumbers () {
 		text.forEach(function(word, i){
 			if (!isNaN(word)) {
 				var monthCheck = text[i-2];
+				var wordBefore = text[i-1]
 				var newNum;
-				if (isDate(monthCheck)) {
+				if (isDate(monthCheck, wordBefore)) {
 					newNum = parseInt(word)+10
 				}
 				else {
