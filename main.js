@@ -28,7 +28,10 @@ function getImageTags () {
 // document.querySelector("a.image > img").srcset="https://www.placecage.com/200/300"
 
 getImageTags()
-.then(getFlickrId)
+.then(function(tags) {
+  var truncTags = tags.slice(0,5) || tags;
+  return getFlickrId(truncTags)
+})
 .then(getFlickrImageUrl).then(function(url){
   replaceImage(foundImage, url);
 });
@@ -115,11 +118,12 @@ function messWithNumbers () {
 
 }
 
+https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=3bc2eb107650c442ed3c64a9ca0ef2a4&photo_id=123&format=json&nojsoncallback=1
 // https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=3bc2eb107650c442ed3c64a9ca0ef2a4&photo_id=hello&format=json&nojsoncallback=1
 function getFlickrImageUrl (photo_id) {
   var flickrUrl = 'https://api.flickr.com/services/rest/';
   var api_key = 'e7b4710e9ea3c0d71fee1d0ec25a5f37';
-  var method = 'flickr.photos.getInfo';
+  var method = 'flickr.photos.getSizes';
   var format = 'json';
   var callback = 1;
   var url = flickrUrl
@@ -131,8 +135,10 @@ function getFlickrImageUrl (photo_id) {
   console.log(url);
   return axios.get(url)
   .then(function(r) {
-    var imgUrl = r.data.photo.urls.url[0]._content;
-    console.log('imgUrl', r.data.photo.urls.url[0]._content);
+    console.log(r);
+    var sizeArr = r.data.sizes.size;
+    var imgUrl = sizeArr[Math.floor(sizeArr.length / 2)].source;
+    console.log('imgUrl', imgUrl);
     return imgUrl;
   }, function(err) {
     console.log('Sorry, something is wrong: ' + err);
