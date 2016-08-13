@@ -13,22 +13,24 @@ function getImageTags () {
 	});
 }
 
+
 function isDate (string) {
+	string = string.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"")
 	var months = {
-		January: 31, 
-		February: 28,
-		March: 31,
-		April: 30,
-		May: 31,
-		June: 30,
-		July: 31,
-		August: 31,
-		September: 30,
-		October: 31,
-		November: 30,
-		December: 31 
+		january: 31, 
+		february: 28,
+		march: 31,
+		april: 30,
+		may: 31,
+		june: 30,
+		july: 31,
+		august: 31,
+		september: 30,
+		october: 31,
+		november: 30,
+		december: 31 
 	}
-	if (months[string]) return true
+	if (months[string.toLowerCase()]) return true
 	else return false
 }
 
@@ -42,8 +44,15 @@ function messWithNumbers () {
 		var newText = []; 
 		text.forEach(function(word, i){
 			if (!isNaN(word)) {
-				var monthCheck = text[i-2]
-				var newNum = parseInt(word)+10
+				var monthCheck = text[i-2];
+				var newNum;
+				if (isDate(monthCheck)) {
+					newNum = parseInt(word)+10
+				}
+				else {
+					var amount = Math.pow(10, word.length-1)
+					newNum = parseInt(word)+amount
+				}
 				newText.push(newNum)
 			}
 			else {
