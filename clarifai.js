@@ -64,6 +64,7 @@ function parseResponse(resp) {
   var tags = [];
   if (resp.status_code === 'OK') {
     var results = resp.results;
+    console.log("whole result ", results);
     tags = results[0].result.tag.classes;
   } else {
     console.log('Sorry, something is wrong.');
