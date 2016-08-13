@@ -57,16 +57,20 @@ function getFlickrId (tagArr){
 
 	}
 
-getGoogleData ()
+getBingData();
 
-function getGoogleData () {
-	var url = "https://www.google.com/search?start=0&num=10&q=red+sox&cr=countryCA&client=google-csbe&output=xml_no_dtd&cx=00255077836266642015:u-scht7a-8i"
-	return axios.get(url)
+function getBingData () {
+	var url = "https://api.cognitive.microsoft.com/bing/v5.0/images/search?q=cats&count=1&offset=0&mkt=en-us&safeSearch=Moderate"
+	return axios.get(url, {
+    headers: {
+      "Ocp-Apim-Subscription-Key": "3fc3d83a1e7c44bca46c097afcaeb748"
+    }
+  })
   	.then(function(r) {
-  		console.log(parseXml(r));
+  		console.log("cats!", r.data.value[0].thumbnailUrl);
 
   	});
-}//http://goessner.net/download/prj/jsonxml/
+}
 
 function getFlickrImageUrl (photo_id) {
   var flickrUrl = 'https://api.flickr.com/services/rest/';
