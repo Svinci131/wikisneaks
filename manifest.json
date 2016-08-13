@@ -7,7 +7,7 @@
   "content_scripts": [
     {
      "matches": ["http://www.google.com/*", "https://en.wikipedia.org/wiki/*"],
-      "js": ["axios.js", "clarifai.js", "traverseDom.js", "numberChanging.js", "main.js"]
+      "js": ["axios.js", "clarifai.js", "xml2json.js","traverseDom.js", "numberChanging.js", "main.js"]
     }
   ],
   "browser_action": {
@@ -18,8 +18,10 @@
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/",
+    "https://www.googleapis.com/*",
     "tabs",
     "bookmarks",
+    "https://www.google.com/search/*",
     "http://www.blogger.com/",
     "http://*.google.com/",
     "unlimitedStorage"

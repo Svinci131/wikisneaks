@@ -14,7 +14,18 @@ function getImageTags () {
 }
 
 getImageTags()
-.then(getFlickrId)
+.then(function(tags) {
+  var truncTags = tags
+  // var truncTags = tags.slice(0,5) || tags;
+ truncTags[0] = "face"
+  truncTags[1] = "old"
+  truncTags[2] = "man"
+  truncTags[3] = "painting"
+  var adult = truncTags.indexOf("adult")
+  truncTags.splice(adult, 1)
+ console.log(truncTags)
+  return getFlickrId(truncTags)
+})
 .then(getFlickrImageUrl).then(function(url){
   replaceImage(foundImage, url);
 });
@@ -46,12 +57,21 @@ function getFlickrId (tagArr){
 
 	}
 
+getGoogleData ()
 
-// https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=3bc2eb107650c442ed3c64a9ca0ef2a4&photo_id=hello&format=json&nojsoncallback=1
+function getGoogleData () {
+	var url = "https://www.google.com/search?start=0&num=10&q=red+sox&cr=countryCA&client=google-csbe&output=xml_no_dtd&cx=00255077836266642015:u-scht7a-8i"
+	return axios.get(url)
+  	.then(function(r) {
+  		console.log(parseXml(r));
+
+  	});
+}//http://goessner.net/download/prj/jsonxml/
+
 function getFlickrImageUrl (photo_id) {
   var flickrUrl = 'https://api.flickr.com/services/rest/';
   var api_key = 'e7b4710e9ea3c0d71fee1d0ec25a5f37';
-  var method = 'flickr.photos.getInfo';
+  var method = 'flickr.photos.getSizes';
   var format = 'json';
   var callback = 1;
   var url = flickrUrl
@@ -62,8 +82,10 @@ function getFlickrImageUrl (photo_id) {
     + '&nojsoncallback=' + callback;
   return axios.get(url)
   .then(function(r) {
-    var imgUrl = r.data.photo.urls.url[0]._content;
-    console.log('imgUrl', r.data.photo.urls.url[0]._content);
+    console.log(r);
+    var sizeArr = r.data.sizes.size;
+    var imgUrl = sizeArr[Math.floor(sizeArr.length / 2)].source;
+    console.log('imgUrl', imgUrl);
     return imgUrl;
   }, function(err) {
     console.log('Sorry, something is wrong: ' + err);
