@@ -41,6 +41,48 @@ function transformDataToParams(data) {
   }
   return str.join('&');
 }
+function getSimilarImages () {
+  var accessToken = localStorage.getItem('accessToken');
+  var url = "https://api2-prod.clarifai.com/v2/searches"
+
+  var data = {
+    "query": {
+      "stanzas": [
+        {
+          "data": {
+            "tags": [
+              {
+                "concept": {
+                  "name": "dog"
+                },
+                "value": false
+              },
+              {
+                "concept": {
+                  "name":"portrait"
+                },
+                "value":true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+
+  axios.post(url, data, {
+    'headers': {
+      'Authorization': 'Bearer ' + accessToken,
+      'content-type':'application/json'
+    }
+    /*'content-type': 'application/x-www-form-urlencoded'*/
+  }).then(function(r) {
+    console.log(r.data)
+  });
+
+
+
+}
 
 function postImage(imgurl) {
   var accessToken = localStorage.getItem('accessToken');
