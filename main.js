@@ -1,3 +1,30 @@
+_ini();
+
+function _ini(){
+
+    document.getElementsByTagName("html")[0].style.visibility="hidden";
+
+    window.onload=function(){
+
+    var foundImage = document.querySelector("a.image > img")
+
+    function getMainImageSrc() {
+      return foundImage.src
+    }
+    //replace that image's source with a new source'
+    function replaceImage(image, url){
+
+      document.querySelector("a.image > img").src=url;
+      document.querySelector("a.image > img").srcset=url;
+      document.querySelector("a.image > img").style.display="block";
+      document.querySelector("a.image > img").style.width="auto";
+      document.querySelector("a.image > img").style.height="auto";
+
+    }
+
+
+
+        //do your stuff
 var mainImage = getMainImageSrc();
 
 getCredentials();
@@ -14,6 +41,8 @@ postImage(mainImage)
 })
 .then(function(url){
   replaceImage(foundImage, url);
+       document.getElementsByTagName("html")[0].style.visibility="initial";
+
 })
 .catch(function (err) {
   console.log(err)
@@ -21,7 +50,7 @@ postImage(mainImage)
 
 function isPainting (tags) {
 	var paintingWords = {
-		"art": true, 
+		"art": true,
 		"painting": true
 	}
 	for(var i = 0; i < tags.length; i++) {
@@ -45,6 +74,10 @@ function getBingData (tags) {
   	.then(function(r) {
   		console.log("cats!", r.data.value[0]);
   		return r.data.value[0].thumbnailUrl
-  	});
+  	})
 }
 
+
+    }
+
+}
