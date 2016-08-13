@@ -1,15 +1,17 @@
-getCredentials(function() {});
-
 var mainImage = getMainImageSrc();
 
+getCredentials();
 messWithNumbers();
+
 
 postImage(mainImage)
 .then(function(tags) {
   var truncTags = tags.slice(0,5) || tags;
+  //remove adult for obvious reasons
   var adult = truncTags.indexOf("adult")
   truncTags.splice(adult, 1)
-  return getBingData(truncTags);
+  var type = isPainting (tags) ? "Clipart" : "Photo"
+  return getBingData(truncTags, type);
 })
 .then(function(url){
   replaceImage(foundImage, url);
@@ -18,10 +20,22 @@ postImage(mainImage)
   console.log(err)
 });
 
-function getBingData (tags) {
+function isPainting (tags) {
+	var paintingWords = {
+		"art": true, 
+		"painting": true
+	}
+	for(var i = 0; i < tags.length; i++) {
+		if (paintingWords[tags[i]]) return true
+	}
+	return false
+}
+
+function getBingData (tags, type) {
 	var url = "https://api.cognitive.microsoft.com/bing/v5.0/images/search?q="
   + tags.join(", ")
   + ", &count=1&offset=0&mkt=en-us&safeSearch=Moderate"
+  + "&imageType="+type
   console.log("------------------------------")
   console.log(url)
   console.log("------------------------------")
@@ -31,7 +45,7 @@ function getBingData (tags) {
     }
   })
   	.then(function(r) {
-  		console.log("cats!", r.data.value[0].thumbnailUrl);
+  		console.log("cats!", r.data.value[0]);
   		return r.data.value[0].thumbnailUrl
   	});
 }

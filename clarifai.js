@@ -2,7 +2,7 @@
 var CLIENT_ID = "h9dEBWgcaMiMgae_vAMgL0iTl8HkKnDE_5gfBFe7"
 var CLIENT_SECRET = "UZbIKernZXiTG7xCoZ3wbN-w13DJRkopcPpEgBb9"
 
-function getCredentials(cb) {
+function getCredentials() {
   var data = {
     'grant_type': 'client_credentials',
     'client_id': CLIENT_ID,
@@ -19,7 +19,6 @@ function getCredentials(cb) {
   }).then(function(r) {
     localStorage.setItem('accessToken', r.data.access_token);
     localStorage.setItem('tokenTimestamp', Math.floor(Date.now() / 1000));
-    cb();
   }, function(err) {
     console.log(err);
   });
