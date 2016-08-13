@@ -7,7 +7,7 @@
   "content_scripts": [
     {
       "matches": ["http://www.google.com/*", "https://en.wikipedia.org/wiki/*"],
-      "js": ["main.js"]
+      "js": ["axios.js", "main.js"]
     }
   ],
   "browser_action": {

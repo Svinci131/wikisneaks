@@ -1,19 +1,6 @@
 
-// document.querySelectorAll("h1")[0].innerHTML = "my text"
-
-
-//Function that search dom and get all image links 
-//Function that uses the api gets tags 
-	//Gets similar images
-//Replaces
-
 var CLIENT_ID = "h9dEBWgcaMiMgae_vAMgL0iTl8HkKnDE_5gfBFe7"
 var CLIENT_SECRET = "UZbIKernZXiTG7xCoZ3wbN-w13DJRkopcPpEgBb9"
-
-
-getCredentials()
-var accessToken = localStorage.getItem('accessToken');
-console.log("here", accessToken)
 
 function getCredentials(cb) {
   var data = {
@@ -23,13 +10,14 @@ function getCredentials(cb) {
   };
   var url = 'https://api.clarifai.com/v1/token';
 
-  return axios.post(url, data, {
-    'transformRequest': [
-      function() {
-        return transformDataToParams(data);
-      }
-    ]
-  }).then(function(r) {
+  // return axios.post(url, data, {
+  //   'transformRequest': [
+  //     function() {
+  //       return transformDataToParams(data);
+  //     }
+  //   ]
+  // })
+  .then(function(r) {
     localStorage.setItem('accessToken', r.data.access_token);
     localStorage.setItem('tokenTimestamp', Math.floor(Date.now() / 1000));
     cb();
@@ -96,3 +84,5 @@ function run(imgurl) {
     postImage(imgurl);
   }
 }
+
+
