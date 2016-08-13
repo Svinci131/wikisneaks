@@ -1,29 +1,14 @@
 getCredentials(function() {});
 
 var mainImage = getMainImageSrc();
-var accessToken = localStorage.getItem('accessToken');
 
 messWithNumbers();
 
-function getImageTags () {
-	return postImage(mainImage)
-	.then(function(tags) {
-    return tags;
-	});
-}
-
-// function weight (arr, word) {
-// 	var index = arr.indexOf(word)
-// 	if (arr.indexOfWord > 0) {
-// 		arr[0] = word; 
-// 	}
-// }
-getImageTags()
+postImage(mainImage)
 .then(function(tags) {
   var truncTags = tags.slice(0,5) || tags;
   var adult = truncTags.indexOf("adult")
   truncTags.splice(adult, 1)
- console.log(truncTags)
   return getBingData(truncTags);
 })
 .then(function(url){
@@ -34,7 +19,6 @@ getImageTags()
 });
 
 function getBingData (tags) {
-
 	var url = "https://api.cognitive.microsoft.com/bing/v5.0/images/search?q="
   + tags.join(", ")
   + ", &count=1&offset=0&mkt=en-us&safeSearch=Moderate"
