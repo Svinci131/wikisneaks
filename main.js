@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-getCredentials(); 
-var mainImage = getMainImageSrc(); 
-=======
-
-// document.querySelectorAll("h1")[0].innerHTML = "my text"
-
-
-//Function that search dom and get all image links
-//Function that uses the api gets tags
-	//Gets similar images
-//Replaces
-
 getCredentials(function() {
   console.log("got credentials");
 });
