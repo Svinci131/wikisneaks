@@ -1,4 +1,4 @@
-
+//move to secret
 var CLIENT_ID = "h9dEBWgcaMiMgae_vAMgL0iTl8HkKnDE_5gfBFe7"
 var CLIENT_SECRET = "UZbIKernZXiTG7xCoZ3wbN-w13DJRkopcPpEgBb9"
 
@@ -40,6 +40,7 @@ function transformDataToParams(data) {
   }
   return str.join('&');
 }
+
 function getSimilarImages () {
   var accessToken = localStorage.getItem('accessToken');
   var url = "https://api2-prod.clarifai.com/v2/searches"

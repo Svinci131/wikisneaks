@@ -1,3 +1,29 @@
+function getBingData (tags) {
+    var url = "https://api.cognitive.microsoft.com/bing/v5.0/images/search?q="
+    + tags.join(", ")
+    + ", &count=1&offset=0&mkt=en-us&safeSearch=Moderate"
+    return axios.get(url, {
+      headers: {
+        "Ocp-Apim-Subscription-Key": "3fc3d83a1e7c44bca46c097afcaeb748"
+      }
+    })
+    .then(function(r) {
+      return r.data.value[0].thumbnailUrl
+    })
+}
+
+function isPainting (tags) {
+  var paintingWords = {
+    "art": true,
+    "painting": true
+  }
+  for(var i = 0; i < tags.length; i++) {
+    if (paintingWords[tags[i]]) return true
+  }
+  return false
+}
+
+
 //get images from tags
 function getFlickrId (tagArr){
     var tagString = tagArr.join('%2C+');
@@ -20,9 +46,7 @@ function getFlickrId (tagArr){
     }, function(err){
       console.log("There's an error: " + err);
     });
-
 }
-
 
 function getFlickrImageUrl (photo_id) {
   var flickrUrl = 'https://api.flickr.com/services/rest/';

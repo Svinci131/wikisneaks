@@ -8,17 +8,13 @@
     {
       "run_at":"document_start",
      "matches": ["http://www.google.com/*", "https://en.wikipedia.org/wiki/*"],
-      "js": ["axios.js", "clarifai.js", "xml2json.js", "numberChanging.js", "main.js"],
+      "js": ["./libraries/axios.js", "./libraries/xml2json.js",  "./domFunctions/imageFunctions.js", "./domFunctions/numberChanging.js", "clarifai.js", "searchImages.js", "main.js"],
       "run_at": "document_start"
     }
   ],
-  // "content_styles": [{
-  //   "css": ["main.css"]
-  // }
-  // ],
   "browser_action": {
     "default_title": "wikipedia enhancer",
-    "default_icon": "./rabbit (1).png",
+    "default_icon": "./imgs/rabbit (1).png",
     "default_popup": "popup.html"
   },
   "permissions": [

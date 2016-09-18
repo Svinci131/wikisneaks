@@ -1,4 +1,3 @@
-
 function isDate (string) {
 	if (!string) return false
 	string = string.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '');
