@@ -79,9 +79,6 @@ function getSimilarImages () {
   }).then(function(r) {
     console.log(r.data)
   });
-
-
-
 }
 
 function postImage(imgurl) {
