@@ -17,14 +17,18 @@ var months = {
 	november: 30,
 	nov: 30,
 	december: 31,
-	dec: 31
+	dec: 31, 
 };
 
 var dateWords = {
 	since: true,
 	in: true,
-	from: true
-}
+	from: true, 
+	born: true, 
+	died: true, 
+	from: true, 
+	to: true
+};
 
 function replaceEl (content, oldNum, newNum) {
 	var reg = new RegExp(oldNum, "i");
@@ -56,7 +60,10 @@ function isDate (i, text) {
 function alterNum (i, text, currNum) {
 	var word = currNum;
 	if (isDate(i, text)) {
-		return parseInt(word)+10;
+		var n = parseInt(word); 
+		if (n+10 < getCurrentYear()) return n+10;
+		else return n-3;
+		
 	} 
 	else {
 		var amount = Math.pow(10, word.length - 1);
