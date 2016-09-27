@@ -8,7 +8,7 @@
     {
       "run_at":"document_start",
      "matches": ["http://www.google.com/*", "https://en.wikipedia.org/wiki/*"],
-      "js": ["./libraries/axios.js", "./libraries/xml2json.js",  "./domFunctions/imageFunctions.js", "./domFunctions/numberChanging.js", "clarifai.js", "searchImages.js", "main.js"],
+      "js": ["./libraries/axios.js", "./libraries/xml2json.js",  "./domFunctions/imageFunctions.js", "./domFunctions/utils.js", "./domFunctions/numberChanging.js", "./domFunctions/textChanging.js", "clarifai.js", "searchImages.js", "main.js"],
       "run_at": "document_start"
     }
   ],
