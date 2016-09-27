@@ -20,7 +20,13 @@ var months = {
 	dec: 31
 };
 
-function replaceNum (content, oldNum, newNum) {
+var dateWords = {
+	since: true,
+	in: true,
+	from: true
+}
+
+function replaceEl (content, oldNum, newNum) {
 	var reg = new RegExp(oldNum, "i");
 	return content.replace(reg, newNum);
 }
@@ -43,7 +49,7 @@ function isDate (i, text) {
 	//if Jan 31 // 2016 January 31
 	if (monthCheck(secToLast) || monthCheck(last)) return true;
 	//word check 
-	if (last == "in" || last == "from" ) return true; 
+	if (dateWords[last]) return true; 
 }
 
 //(int, str) => int;
