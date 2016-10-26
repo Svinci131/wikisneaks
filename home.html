@@ -1,0 +1,99 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+
+ <!-- https://creativemarket.com/graio/115177-Band-Semantic-UI-HTML-Template
+ --><html>
+  <head>
+    <title>Getting Started Extension's Popup</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
+    <style>
+      body {
+        font-family: "museo-sans",sans-serif;
+        /*font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;*/
+  /*      font-size: 100%;*/
+    
+        color: gray;
+        /*color: #74C365; */
+        font-size: 18px;
+        height: 160px; 
+        width: 380px; 
+        margin: 0;
+        line-height: 1.5;
+        padding: 1.5em;
+      }
+      h1 {
+       color: rgb(98, 140, 188);
+       font-weight: bold;
+       font-size: 65px;
+       text-transform: uppercase;
+      }
+      #status {
+        /* avoid an excessively wide status text */
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 400px;
+      }
+      #main {
+        margin-top: 15%;
+        /*margin: 15% 0 0 10%;*/
+      }
+      button.green {
+        margin-top: 5%;
+        background-color: rgb(98, 140, 188);
+        color: white;
+      }
+      button.green:hover {
+        background-color:rgb(84, 121, 163);
+        color: white;
+      }
+
+      .green {
+        color: rgb(98, 140, 188);
+      }
+      @media (min-width: 768px) {
+      .container {
+          width: 875px;
+      }
+    }
+    </style>
+      <div id="main" class="container">
+        <div class="row">
+          <div class="col-sm-8">
+            <h1>WikiSneaks</h1>
+            
+            <h3>We are a nice, unassuming app that makes your computer run a little faster!</h3>
+
+            <p><strong class="green">SSSSSSH!</strong> Secretly we replace images with similiar images, and slightly alter dates and statistics on Wikipedia- Making humanity less informed!</p>
+
+            <p class="green">Wikisneaks won an award a ClarifyAi Hackthon <i class="fa fa-trophy green" aria-hidden="true"></i></p>
+            <button class="btn btn-default btn-lg green">DownLoad Wikisneaks</button>
+          </div>
+
+
+          <!-- col1 -->
+          <div class="col-sm-4 col-md-4 col-lg-2">
+             <img width="100%"  src="http://www.2dwebdesign.com/wp-content/uploads/2015/03/monitor_code__editor-512.png" />
+
+            <!--  <img width="100%" src="https://cdn0.iconfinder.com/data/icons/web-service-and-development/512/computer_coding_php_code_programing_program_desktop_system_monitor_display_retro_old_obsolete_technology_development_oldschool_monoblock_algorithm_css_html_flat_design_icon-512.png" />
+          </div>
+          <!-- col2 -->
+        </div>
+         <!-- row -->
+      </div>
+
+    <script type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div id="status"></div>
+    <img id="image-result" hidden>
+  </body>
+</html>
+

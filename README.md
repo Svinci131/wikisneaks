@@ -9,5 +9,5 @@ Numbers are altered according to their original size:
   
  There are additional checks to make sure no dates are in the future and as we get closer to the present dates are altered less drastically, to make it obvious to our victims.
  
- We used the Clarifiai API to find classifying keys for the original images and the Flickr API to get new images. We implemented a simple system to weight certain keys. Man, Woman, Portrait come up a lot so they aren't that helpful for finding similar images, where as old, young, suit are much more useful. Eventually we would like to set up a more advanced system for decreasing the weight of the more frequent keys. 
+ We used the Clarifiai API to find classifying keys for the original images and the Bing API to get new images. We implemented a simple system to weight certain keys. Man, Woman, Portrait come up a lot so they aren't that helpful for finding similar images, where as old, young, suit are much more useful. Eventually we would like to set up a more advanced system for decreasing the weight of the more frequent keys. 
  

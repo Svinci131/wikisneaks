@@ -3,9 +3,13 @@ var mispellings = {
 	"their": "there", 
 	"there": "their", 
 	"restaurant": "restraunt", 
-	"receive": "recieve"
-}
+	"receive": "recieve", 
+	"regardless": "irregardless"
+};
 
+//alter numbers by adding ten to their current power
+//add 10 to dates so it's less obvious- 
+//subtract three if adding would put us in the future
 function messWithNums (word, text, cleaned, i) {
 	if (!isNaN(cleaned)) {
 		var newNum = alterNum(i, text, cleaned);
@@ -13,7 +17,7 @@ function messWithNums (word, text, cleaned, i) {
 		if(!isNaN(newNum)) return newNum;		
 	}
 }
-
+//mispell certain words
 function mispell(word, cleaned) {
 	if (mispellings[cleaned]) {
 		var newWord = replaceEl (word, cleaned, mispellings[cleaned]);
@@ -31,9 +35,7 @@ function messWithNumbers () {
 	for (var i = 0; i < els.length; i++) {
 		var el = els[i];
 		var text = el.innerHTML ? el.innerHTML.split(' ') : [];
-		/////
 		var newText = [];
-		//check each word
 		text.forEach(function(word, i){
 			if (word.length) {
 				var cleaned = clean(word);
@@ -46,7 +48,6 @@ function messWithNumbers () {
 			}
 				
 		});
-
 		if (newText.length) el.innerHTML = newText.join(' ');
 	}
 
